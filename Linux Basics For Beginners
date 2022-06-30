@@ -1,0 +1,193 @@
+##### Linux For Hackers Episode-01 #####
+     ----- Linux Get Started -----
+
+---- Before Moving Forward To Our Linux Class I Want You To Understand That Everything In Linus Is FILES ----
+
+1. Write pwd in terminal to get to know where you're means in which directory.
+command: pwd
+output: /home/user/
+pwd stands for - Print Working Directory
+
+2. How you can check files and all stuff present in the current directory
+command: ls
+output: Desktop    Downloads   Music     Public           snap       Videos
+        Documents  msfinstall  Pictures  PycharmProjects  Templates
+ls stands for - List
+
+3. How you can go to the directory available in list
+#command: cd Desktop
+Output: user@Anonymous:~/Desktop$
+cd stands for - Change directory
+
+#Now write pwd to see if you're really in the Desktop or not
+command: pwd
+output: /home/user/Desktop
+
+#Write ls to see which files are available on Desktop
+command: ls
+output: Linux Basics.txt
+
+4. How to go back from current directory
+cuurent directory: /home/user/Desktop
+command: cd ..
+checking command: pwd
+output: /home/user
+
+#Tip
+Always check which directory you have access to by writting pwd command & hit Enter
+
+5. How to go back again
+cuurent directory: /home/user
+command: cd ..
+checking command: pwd
+output: /home
+
+6. Go back again one time
+cuurent directory: /home
+command: cd ..
+checking command: pwd
+output: / ---> This is a root of the file system basically the end
+
+7. How to move forward from any directory
+cuurent directory: / ---> Root
+command: cd \
+checking command: pwd
+output: /home/user
+
+
+
+
+##### Linux For Hackers Episode-02 #####
+     ----- Linux File System -----
+
+8. Who Am I? Let's find out
+command: whoami ---> small letters
+output: Username ---> Your name on the system
+
+9. What is bin in root?
+Bin stands for Binaries computer speak
+command: pwd
+output: / ---> root
+
+#Access bin
+command: ls
+output: bin    dev   lib    libx32      mnt   root  snap      sys  var
+boot   etc   lib32  lost+found  opt   run   srv       tmp
+cdrom  home  lib64  media       proc  sbin  swapfile  usr
+
+command: cd bin
+output: Tons of Commands that you're using right now let's find ls, pwd & whoami etc.
+
+10. How to copy/backup any command?
+Reason: We are going to demonstrate this to see if we can make our own command or not.
+
+WARNING!!!
+Before making a backup don't delete any command do it on your own.
+
+#Where we are! Let's find out
+command: pwd
+output: /bin
+
+We're taking ls for demostrating purpose.
+
+Now it's time to copy ls and assign to something our own
+What will happen? It will copy the binary contents of ls to your own named command.
+command: cp ls newls
+#
+cp stands for copy
+output: cp: cannot create regular file 'newls': Permission denied
+
+## Solution: use sudo before command to provide previleges of Admin we'll discuss "sudo" later in this class
+
+command: sudo cp ls cyber
+
+Write newls and you'll get the same result as ls
+command: newls
+
+!!! Now it's time to delete the ls the original one !!!
+command: rm ls
+rm stands for Remove
+output: rm: remove write-protected regular file 'ls'?
+
+You need to answer "Yes" but the best way to write the command is
+command: sudo rm ls
+command: ls ---> To check the list as we learned recently to show the list
+output: bash: /usr/bin/ls: No such file or directory
+
+ls not found why so let's try newls that we assigned from ls
+command: newls
+ouput: Tons of commands ---> Means it worked
+
+11. How to get back to ls but how? We removed it right
+command: sudo cp newls ls
+#Now we're copying newls to ls as we did recently
+ouput: Tons of commands again
+That's good we got the ls again :)
+
+Now it's time to remove newls coz we don't need it right?
+command: sudo rm newls
+Let's check if newls exists or not
+
+# command: newls
+output: bash: /usr/bin/newls: No such file or directory
+
+Good we are done :)
+
+12. Now it's time to go back and check what is sbin
+command: pwd
+output: /bin
+#
+command: cd / or cd ..
+output: / ---> root
+
+command: ls
+output: bin    dev   lib    libx32      mnt   root  snap      sys  var
+boot   etc   lib32  lost+found  opt   run   srv       tmp
+cdrom  home  lib64  media       proc  sbin  swapfile  usr
+
+Now let's check the sbin means it's a super binaries that can be accessed via admin and it has special commands let's see.
+command: cd sbin
+ouput: Tons of special commands.
+
+Now let's try some command for demostration like adduser
+command: sudo adduser username ---> you can use any name on username like ben or charlie etc.
+output: Now it'll ask some detils like password and confirm password etc.
+
+13. How can you check the users?
+current directory: / ---> root
+command: ls
+output: bin    dev   lib    libx32      mnt   root  snap      sys  var
+boot   etc   lib32  lost+found  opt   run   srv       tmp
+cdrom  home  lib64  media       proc  sbin  swapfile  usr
+
+command: cd home
+command: ls
+output: Demouser
+
+Let's jump into Demouser and see what's we got :)
+command: cd Demouser
+command: ls
+output: Desktop    Downloads   Music     Public           snap       Videos
+Documents  msfinstall  Pictures  PycharmProjects  Templates
+
+14. How we can check the root previleges means who is root?
+current directory: / ---> root
+command: cd root
+output: bash: cd: root: Permission denied
+
+What just happened? Take 2 min to think of the solution!
+Yes, I got the solution :)
+
+command: sudo ls root
+output: snap
+command: ls snap
+
+15. How we can check something cool? Like network configurations right :)
+command: pwd
+output: / ---> root
+#
+command: cd etc
+output: Tons of commands
+Let's find a network yes we got it!
+
+command: sudo cd network
