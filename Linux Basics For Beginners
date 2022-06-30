@@ -191,3 +191,12 @@ output: Tons of commands
 Let's find a network yes we got it!
 
 command: sudo cd network
+
+16. How we can change your password or any other user's password easily?
+command: sudo username passwd
+output: [sudo] password for cyber: 
+New password: 
+Retype new password: 
+passwd: password updated successfully
+
+That's all folks we've completed our Linux For Hackers Episode-02 here :)
